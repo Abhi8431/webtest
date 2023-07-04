@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Visitor Count</title>
+  <script>
+    function incrementVisitorCount() {
+      // Check if local storage is supported by the browser
+      if (typeof(Storage) !== "undefined") {
+        // Get the current visitor count from local storage
+        let visitorCount = localStorage.getItem("visitorCount");
+
+        // Increment the visitor count
+        visitorCount = visitorCount ? parseInt(visitorCount) + 1 : 1;
+
+        // Update the visitor count in local storage
+        localStorage.setItem("visitorCount", visitorCount);
+
+        // Display the visitor count on the page
+        document.getElementById("visitorCount").textContent = `Visitors: ${visitorCount}`;
+      } else {
+        alert("Sorry, your browser does not support local storage.");
+      }
+    }
+
+    // Run the incrementVisitorCount function when the page loads
+    window.onload = incrementVisitorCount;
+  </script>
+</head>
+<body>
+  <h2>Welcome to the Website!</h2>
+  <p>Content goes here...</p>
+
+  <footer>
+    <p id="visitorCount">Visitors: </p>
+  </footer>
+</body>
+</html>

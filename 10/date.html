@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Date Search</title>
+  <script>
+    function searchDateInString() {
+      const inputString = prompt("Enter a string:");
+      const regex = /\d{2}\/\d{2}\/\d{4}/; // Regular expression pattern to match the date in the format dd/mm/yyyy
+      const match = inputString.match(regex);
+
+      if (match) {
+        alert("Date found: " + match[0]);
+      } else {
+        alert("Date not found.");
+      }
+    }
+  </script>
+</head>
+<body>
+  <h2>Date Search</h2>
+
+  <button onclick="searchDateInString()">Search Date</button>
+</body>
+</html>

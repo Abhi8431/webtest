@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Infection Check</title>
+  <script>
+    function checkInfection(virusComposition, bloodComposition) {
+      let virusIndex = 0;
+      let bloodIndex = 0;
+
+      while (virusIndex < virusComposition.length && bloodIndex < bloodComposition.length) {
+        if (virusComposition[virusIndex] === bloodComposition[bloodIndex]) {
+          bloodIndex++;
+        }
+        virusIndex++;
+      }
+
+      return bloodIndex === bloodComposition.length ? "POSITIVE" : "NEGATIVE";
+    }
+
+    function handleCheck() {
+      const virusComposition = document.getElementById('virusComposition').value.toLowerCase();
+      const bloodComposition = document.getElementById('bloodComposition').value.toLowerCase();
+
+      const result = checkInfection(virusComposition, bloodComposition);
+
+      document.getElementById('result').textContent = `Result: ${result}`;
+    }
+  </script>
+</head>
+<body>
+  <h2>Infection Check</h2>
+
+  <label for="virusComposition">Virus Composition:</label>
+  <input type="text" id="virusComposition" placeholder="Enter virus composition">
+
+  <label for="bloodComposition">Blood Composition:</label>
+  <input type="text" id="bloodComposition" placeholder="Enter blood composition">
+
+  <button onclick="handleCheck()">Check Infection</button>
+
+  <p id="result"></p>
+</body>
+</html>

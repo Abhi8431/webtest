@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Set Operations</title>
+  <script>
+    function performSetOperations() {
+      const mySet = new Set();
+
+      // Add values to the Set
+      mySet.add("Apple");
+      mySet.add("Banana");
+      mySet.add("Cherry");
+      mySet.add("Durian");
+
+      // Retrieve a value from the Set
+      const hasBanana = mySet.has("Banana");
+      console.log("Has Banana:", hasBanana);
+
+      // Iterate over the Set
+      const setElements = [];
+      for (const item of mySet) {
+        setElements.push(item);
+      }
+
+      // Display the Set elements on the webpage
+      const resultElement = document.getElementById("result");
+      resultElement.textContent = "Set elements: " + setElements.join(", ");
+    }
+  </script>
+</head>
+<body>
+  <h2>Set Operations</h2>
+
+  <button onclick="performSetOperations()">Perform Set Operations</button>
+
+  <p id="result"></p>
+</body>
+</html>

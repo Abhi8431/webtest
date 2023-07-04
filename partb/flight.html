@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Flight and Hotel Booking</title>
+</head>
+<body>
+  <h2>Flight and Hotel Booking</h2>
+
+  <button onclick="bookTrip()">Book Trip</button>
+
+  <div id="output"></div>
+
+  <script>
+    function bookFlight() {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          // Simulating flight booking
+          resolve('Flight booked');
+        }, 2000); // Delay of 2 seconds
+      });
+    }
+
+    function bookHotel() {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          // Simulating hotel booking
+          resolve('Hotel booked');
+        }, 1500); // Delay of 1.5 seconds
+      });
+    }
+
+    function bookTrip() {
+      const outputElement = document.getElementById('output');
+      outputElement.innerHTML = '';
+
+      bookFlight()
+        .then((flightMessage) => {
+          outputElement.innerHTML += '<p>' + flightMessage + '</p>';
+          return bookHotel();
+        })
+        .then((hotelMessage) => {
+          outputElement.innerHTML += '<p>' + hotelMessage + '</p>';
+          outputElement.innerHTML += '<p>Trip booked</p>';
+        })
+        .catch((error) => {
+          outputElement.innerHTML += '<p>Error: ' + error + '</p>';
+        });
+    }
+  </script>
+</body>
+</html>

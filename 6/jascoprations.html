@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Event Demo</title>
+</head>
+<body>
+  <h2>Event Demo</h2>
+
+  <button id="clickButton">Click me!</button>
+  <div id="mouseoverDiv" style="width: 200px; height: 100px; background-color: gray;"></div>
+  <input type="text" id="changeInput" placeholder="Enter text">
+  <p id="keyDownResult"></p>
+
+  <script>
+    // onClick event
+    const clickButton = document.getElementById('clickButton');
+    clickButton.addEventListener('click', () => {
+      alert('onClick event triggered');
+    });
+
+    // onMouseOver event
+    const mouseoverDiv = document.getElementById('mouseoverDiv');
+    mouseoverDiv.addEventListener('mouseover', () => {
+      mouseoverDiv.style.backgroundColor = 'blue';
+    });
+
+    // onMouseOut event
+    mouseoverDiv.addEventListener('mouseout', () => {
+      mouseoverDiv.style.backgroundColor = 'gray';
+    });
+
+    // onChange event
+    const changeInput = document.getElementById('changeInput');
+    changeInput.addEventListener('change', () => {
+      alert('onChange event triggered');
+    });
+
+    // onKeyDown event
+    const keyDownResult = document.getElementById('keyDownResult');
+    document.addEventListener('keydown', (event) => {
+      keyDownResult.textContent = 'onKeyDown event: Key code ' + event.keyCode;
+    });
+  </script>
+</body>
+</html>

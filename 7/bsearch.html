@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Array Insertion and Binary Search</title>
+</head>
+<body>
+  <h2>Array Insertion and Binary Search</h2>
+
+  <button onclick="insertElement()">Insert Element</button>
+  <button onclick="performBinarySearch()">Perform Binary Search</button>
+  <p id="output"></p>
+
+  <script>
+    const numbers = [];
+
+    function insertElement() {
+      const element = parseInt(prompt('Enter an element to insert into the array:'));
+      numbers.push(element);
+      numbers.sort((a, b) => a - b);
+    }
+
+    function binarySearch(target) {
+      let left = 0;
+      let right = numbers.length - 1;
+
+      while (left <= right) {
+        const mid = Math.floor((left + right) / 2);
+        if (numbers[mid] === target) {
+          return mid;
+        } else if (numbers[mid] < target) {
+          left = mid + 1;
+        } else {
+          right = mid - 1;
+        }
+      }
+
+      return -1;
+    }
+
+    function performBinarySearch() {
+      const targetElement = parseInt(prompt('Enter an element to search in the array:'));
+      const resultIndex = binarySearch(targetElement);
+
+      if (resultIndex !== -1) {
+        document.getElementById('output').textContent = `Element ${targetElement} found at index ${resultIndex}`;
+      } else {
+        document.getElementById('output').textContent = `Element ${targetElement} not found in the array`;
+      }
+    }
+  </script>
+</body>
+</html>

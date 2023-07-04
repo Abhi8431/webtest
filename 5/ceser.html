@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Caesar Cipher Encryption</title>
+</head>
+<body>
+  <script>
+    function caesarCipherEncrypt(text, shift) {
+      const result = [];
+      for (let i = 0; i < text.length; i++) {
+        let charCode = text.charCodeAt(i);
+
+        // Encrypt uppercase letters (A-Z)
+        if (charCode >= 65 && charCode <= 90) {
+          charCode = ((charCode - 65 + shift) % 26) + 65;
+        }
+
+        // Encrypt lowercase letters (a-z)
+        if (charCode >= 97 && charCode <= 122) {
+          charCode = ((charCode - 97 + shift) % 26) + 97;
+        }
+
+        result.push(String.fromCharCode(charCode));
+      }
+      return result.join('');
+    }
+
+    function encryptText() {
+      const inputText = prompt('Enter the text to encrypt:');
+      const shiftPattern = parseInt(prompt('Enter the shift pattern (a number between 1 and 25):'));
+
+      if (isNaN(shiftPattern) || shiftPattern < 1 || shiftPattern > 25) {
+        alert('Invalid shift pattern. Please enter a number between 1 and 25.');
+        return;
+      }
+
+      const encryptedText = caesarCipherEncrypt(inputText, shiftPattern);
+      alert('Encrypted text: ' + encryptedText);
+    }
+  </script>
+
+  <h2>Caesar Cipher Encryption</h2>
+
+  <button onclick="encryptText()">Encrypt Text</button>
+</body>
+</html>

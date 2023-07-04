@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>String to Array</title>
+  <script>
+    function splitStringIntoArray() {
+      const inputString = prompt("Enter a string:");
+      const wordsArray = inputString.trim().split(" ");
+      displayResult(wordsArray);
+    }
+
+    function displayResult(array) {
+      const resultContainer = document.getElementById("result");
+      resultContainer.textContent = "Result: " + array.join(", ");
+    }
+  </script>
+</head>
+<body>
+  <h2>String to Array</h2>
+
+  <button onclick="splitStringIntoArray()">Split String</button>
+
+  <p id="result"></p>
+</body>
+</html>

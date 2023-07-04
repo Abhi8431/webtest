@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Map Operations</title>
+  <script>
+    function operateMap() {
+      const myMap = new Map();
+
+      // Add values to the Map
+      myMap.set("name", "John");
+      myMap.set("age", 30);
+      myMap.set("city", "New York");
+
+      // Retrieve a value from the Map using key
+      const name = myMap.get("name");
+      console.log("Name:", name);
+
+      // Iterate over the Map
+      myMap.forEach((value, key) => {
+        console.log(key, value);
+      });
+    }
+  </script>
+</head>
+<body>
+  <h2>Map Operations</h2>
+
+  <button onclick="operateMap()">Operate Map</button>
+
+  <script>
+    // Optional: Automatically execute the function on page load
+    window.onload = operateMap;
+  </script>
+</body>
+</html>

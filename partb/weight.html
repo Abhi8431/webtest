@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Weight Conversion</title>
+</head>
+<body>
+  <h2>Weight Conversion</h2>
+
+  <input type="number" id="kgInput" placeholder="Enter weight in kg">
+  <button onclick="convertAndDisplay()">Convert</button>
+  <p id="result"></p>
+
+  <script>
+    const convertWeight = (weight) => {
+      const lbs = weight * 2.2;
+
+      if (lbs > 150) {
+        return "obese";
+      } else if (lbs >= 100 && lbs <= 150) {
+        return "you are ok";
+      } else {
+        return "underweight";
+      }
+    };
+
+    function convertAndDisplay() {
+      const kgInput = document.getElementById("kgInput");
+      const weightInKg = parseFloat(kgInput.value);
+
+      if (isNaN(weightInKg)) {
+        document.getElementById("result").textContent = "Invalid input";
+      } else {
+        const weightCategory = convertWeight(weightInKg);
+        document.getElementById("result").textContent = `Weight category: ${weightCategory}`;
+      }
+    }
+  </script>
+</body>
+</html>

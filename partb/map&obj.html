@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Map vs Object Performance</title>
+</head>
+<body>
+  <h2>Map vs Object Performance</h2>
+
+  <button onclick="testMap()">Test Map</button>
+  <button onclick="testObject()">Test Object</button>
+
+  <p id="result"></p>
+
+  <script>
+    function testMap() {
+      var startTime = performance.now();
+      var map = new Map();
+
+      for (var i = 0; i < 100000; i++) {
+        map.set("key" + i, "value" + i);
+      }
+
+      for (var i = 0; i < 100000; i++) {
+        map.delete("key" + i);
+      }
+
+      var endTime = performance.now();
+      var duration = endTime - startTime;
+
+      document.getElementById("result").textContent = "Map Test: " + duration + " milliseconds";
+    }
+
+    function testObject() {
+      var startTime = performance.now();
+      var obj = {};
+
+      for (var i = 0; i < 100000; i++) {
+        obj["key" + i] = "value" + i;
+      }
+
+      for (var i = 0; i < 100000; i++) {
+        delete obj["key" + i];
+      }
+
+      var endTime = performance.now();
+      var duration = endTime - startTime;
+
+      document.getElementById("result").textContent = "Object Test: " + duration + " milliseconds";
+    }
+  </script>
+</body>
+</html>

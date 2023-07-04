@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Set vs Array Performance</title>
+</head>
+<body>
+  <h2>Set vs Array Performance</h2>
+
+  <button onclick="testSet()">Test Set</button>
+  <button onclick="testArray()">Test Array</button>
+
+  <p id="result"></p>
+
+  <script>
+    function testSet() {
+      var startTime = performance.now();
+      var set = new Set();
+
+      for (var i = 0; i < 1000000; i++) {
+        set.add(i);
+      }
+
+      var result = set.has(999999);
+
+      var endTime = performance.now();
+      var duration = endTime - startTime;
+
+      document.getElementById("result").textContent = "Set Test: " + duration + " milliseconds. Value found: " + result;
+    }
+
+    function testArray() {
+      var startTime = performance.now();
+      var arr = [];
+
+      for (var i = 0; i < 1000000; i++) {
+        arr.push(i);
+      }
+
+      var result = arr.includes(999999);
+
+      var endTime = performance.now();
+      var duration = endTime - startTime;
+
+      document.getElementById("result").textContent = "Array Test: " + duration + " milliseconds. Value found: " + result;
+    }
+  </script>
+</body>
+</html>

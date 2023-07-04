@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Multiple Callback Functions with Promises</title>
+  <script>
+    function asyncOperation() {
+      return new Promise((resolve, reject) => {
+        // Simulating an asynchronous operation
+        setTimeout(() => {
+          const success = true; // Simulating the success or failure of the operation
+          if (success) {
+            resolve("Operation completed successfully."); // Resolve the promise with a success message
+          } else {
+            reject("Operation failed."); // Reject the promise with an error message
+          }
+        }, 2000); // Simulating a 2-second delay
+      });
+    }
+
+    function handleAsyncOperation() {
+      asyncOperation()
+        .then((result) => {
+          document.getElementById("output").textContent = "First callback: " + result;
+          // You can perform additional operations or call another async function here
+          return "Additional data"; // Pass additional data to the next `.then` callback
+        })
+        .then((data) => {
+          document.getElementById("output").textContent += "\nSecond callback: " + data;
+          // You can perform more operations or call another async function here
+          return 42; // Pass any value to the next `.then` callback
+        })
+        .then((value) => {
+          document.getElementById("output").textContent += "\nThird callback: " + value;
+          // You can continue chaining `.then` callbacks as needed
+        })
+        .catch((error) => {
+          document.getElementById("output").textContent = "Error callback: " + error;
+          // Handle any errors that occur during the promise chain
+        });
+    }
+  </script>
+</head>
+<body>
+  <h1>Multiple Callback Functions with Promises</h1>
+  <button onclick="handleAsyncOperation()">Perform Async Operation</button>
+  <pre id="output"></pre>
+</body>
+</html>
